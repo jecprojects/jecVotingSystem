@@ -1,0 +1,38 @@
+.voting-div{
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10rem;
+    margin-top: 2rem;
+}
+    .l-div{
+        position: relative;
+        width: 25rem;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        align-items: center;
+    }
+        .l-div img{
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+        }
+        .c-name{
+            color: #003141;
+            font-family: 'Lato', sans-serif;
+            /* font-family: 'Roboto', sans-serif; */
+            font-size: 32px;
+        }
+        .c-post{
+            color: #003141;
+            font-family: 'Lato', sans-serif;
+            /* font-family: 'Roboto', sans-serif; */
+            font-size: 18px;
+        }
+        .l2{
+            background-color: #23C4ED;
+        }
