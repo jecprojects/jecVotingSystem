@@ -1,6 +1,10 @@
+:root{
+    --n1: 'Roy L. Commishun'
+}
+
 .voting-div{
     width: 100%;
-    height: 25rem;
+    height: 30rem;
     display: flex;
     justify-content: space-between;
     padding: 0 10rem;
@@ -36,3 +40,337 @@
         .l2{
             background-color: #23C4ED;
         }
+
+
+        .wrapper .option{
+            background: #fff;
+            height: 45px;
+            width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 0 10px;
+            border: 2px solid lightgrey;
+            transition: all 0.3s ease;
+          }
+        .wrapper .option .dot{
+            height: 25px;
+            width: 25px;
+            background: #d9d9d9;
+            border-radius: 50%;
+            position: relative;
+        }
+        .wrapper .option .dot::before{
+            position: absolute;
+            content: "";
+            top: 4px;
+            left: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0069d9;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(1.5);
+            transition: all 0.3s ease;
+        }
+
+        input[type="radio"]{
+            display: none;
+        }
+
+        /* For First */
+        [id^='Roy L. Commishun']:checked:checked ~ .option-1,
+        [id^='Pat Thettick']:checked:checked ~ .option-2{
+        border-color: #0069d9;
+        background: #0069d9;
+        }
+        [id^='Roy L. Commishun']:checked:checked ~ .option-1 .dot,
+        [id^='Pat Thettick']:checked:checked ~ .option-2 .dot{
+        background: #fff;
+        }
+        [id^='Roy L. Commishun']:checked:checked ~ .option-1 .dot::before,
+        [id^='Pat Thettick']:checked:checked ~ .option-2 .dot::before{
+        opacity: 1;
+        transform: scale(1);
+        }
+        .wrapper .option span{
+        font-size: 20px;
+        color: #808080;
+        }
+        [id^='Roy L. Commishun']:checked:checked ~ .option-1 span,
+        [id^='Pat Thettick']:checked:checked ~ .option-2 span{
+        color: #fff;
+        }
+
+        /* For Second */
+        [id^='Greg Arias']:checked:checked ~ .option-1,
+        [id^='Toi Story']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Greg Arias']:checked:checked ~ .option-1 .dot,
+        [id^='Toi Story']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Greg Arias']:checked:checked ~ .option-1 .dot::before,
+        [id^='Toi Story']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Greg Arias']:checked:checked ~ .option-1 span,
+        [id^='Toi Story']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+
+        /* For Third */
+        [id^='Percy Kewshun']:checked:checked ~ .option-1,
+        [id^='Rod Knee']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Percy Kewshun']:checked:checked ~ .option-1 .dot,
+        [id^='Rod Knee']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Percy Kewshun']:checked:checked ~ .option-1 .dot::before,
+        [id^='Rod Knee']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Percy Kewshun']:checked:checked ~ .option-1 span,
+        [id^='Rod Knee']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+
+        /* For Fourth */
+        [id^='Gene Eva Convenshun']:checked:checked ~ .option-1,
+        [id^='Jen Tile']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Gene Eva Convenshun']:checked:checked ~ .option-1 .dot,
+        [id^='Jen Tile']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Gene Eva Convenshun']:checked:checked ~ .option-1 .dot::before,
+        [id^='Jen Tile']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Gene Eva Convenshun']:checked:checked ~ .option-1 span,
+        [id^='Jen Tile']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+
+        /* For Fifth */
+        [id^='Perry Scope']:checked:checked ~ .option-1,
+        [id^='Frank N. Stein']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Perry Scope']:checked:checked ~ .option-1 .dot,
+        [id^='Frank N. Stein']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Perry Scope']:checked:checked ~ .option-1 .dot::before,
+        [id^='Frank N. Stein']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Perry Scope']:checked:checked ~ .option-1 span,
+        [id^='Frank N. Stein']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+
+        /* For Sixth */
+        [id^='Fay Daway']:checked:checked ~ .option-1,
+        [id^='Joe V. Awl']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Fay Daway']:checked:checked ~ .option-1 .dot,
+        [id^='Joe V. Awl']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Fay Daway']:checked:checked ~ .option-1 .dot::before,
+        [id^='Joe V. Awl']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Fay Daway']:checked:checked ~ .option-1 span,
+        [id^='Joe V. Awl']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+
+        /* For Seven */
+        [id^='Simon Sais']:checked:checked ~ .option-1,
+        [id^='Peter Owt']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Simon Sais']:checked:checked ~ .option-1 .dot,
+        [id^='Peter Owt']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Simon Sais']:checked:checked ~ .option-1 .dot::before,
+        [id^='Peter Owt']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Simon Sais']:checked:checked ~ .option-1 span,
+        [id^='Peter Owt']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+        /* For Eighth */
+        [id^='Des Ignayshun']:checked:checked ~ .option-1,
+        [id^='Willie Findit']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Des Ignayshun']:checked:checked ~ .option-1 .dot,
+        [id^='Willie Findit']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Des Ignayshun']:checked:checked ~ .option-1 .dot::before,
+        [id^='Willie Findit']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Des Ignayshun']:checked:checked ~ .option-1 span,
+        [id^='Willie Findit']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+        /* For Ninth */
+        [id^='Hank R. Cheef']:checked:checked ~ .option-1,
+        [id^='Bridget Theriveaquai']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Hank R. Cheef']:checked:checked ~ .option-1 .dot,
+        [id^='Bridget Theriveaquai']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Hank R. Cheef']:checked:checked ~ .option-1 .dot::before,
+        [id^='Bridget Theriveaquai']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Hank R. Cheef']:checked:checked ~ .option-1 span,
+        [id^='Bridget Theriveaquai']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+
+        /* For Tenth */
+        [id^='Wes Yabinlatelee']:checked:checked ~ .option-1,
+        [id^='Colin Sik']:checked:checked ~ .option-2{
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+        [id^='Wes Yabinlatelee']:checked:checked ~ .option-1 .dot,
+        [id^='Colin Sik']:checked:checked ~ .option-2 .dot{
+            background: #fff;
+        }
+        [id^='Wes Yabinlatelee']:checked:checked ~ .option-1 .dot::before,
+        [id^='Colin Sik']:checked:checked ~ .option-2 .dot::before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .wrapper .option span{
+            font-size: 20px;
+            color: #808080;
+        }
+        [id^='Wes Yabinlatelee']:checked:checked ~ .option-1 span,
+        [id^='Colin Sik']:checked:checked ~ .option-2 span{
+            color: #fff;
+        }
+
+       /* For 11 */
+       [id^='Lee Nonmi']:checked:checked ~ .option-1,
+       [id^='Lynne Gwafranca']:checked:checked ~ .option-2{
+           border-color: #0069d9;
+           background: #0069d9;
+       }
+       [id^='Lee Nonmi']:checked:checked ~ .option-1 .dot,
+       [id^='Lynne Gwafranca']:checked:checked ~ .option-2 .dot{
+           background: #fff;
+       }
+       [id^='Lee Nonmi']:checked:checked ~ .option-1 .dot::before,
+       [id^='Lynne Gwafranca']:checked:checked ~ .option-2 .dot::before{
+           opacity: 1;
+           transform: scale(1);
+       }
+       .wrapper .option span{
+           font-size: 20px;
+           color: #808080;
+       }
+       [id^='Lee Nonmi']:checked:checked ~ .option-1 span,
+       [id^='Lynne Gwafranca']:checked:checked ~ .option-2 span{
+           color: #fff;
+       }
+
+       /* For 12 */
+       [id^='Pat N. Toffis']:checked:checked ~ .option-1,
+       [id^='Karen Onnabit']:checked:checked ~ .option-2{
+           border-color: #0069d9;
+           background: #0069d9;
+       }
+       [id^='Pat N. Toffis']:checked:checked ~ .option-1 .dot,
+       [id^='Karen Onnabit']:checked:checked ~ .option-2 .dot{
+           background: #fff;
+       }
+       [id^='Pat N. Toffis']:checked:checked ~ .option-1 .dot::before,
+       [id^='Karen Onnabit']:checked:checked ~ .option-2 .dot::before{
+           opacity: 1;
+           transform: scale(1);
+       }
+       .wrapper .option span{
+           font-size: 20px;
+           color: #808080;
+       }
+       [id^='Pat N. Toffis']:checked:checked ~ .option-1 span,
+       [id^='Karen Onnabit']:checked:checked ~ .option-2 span{
+           color: #fff;
+       }
