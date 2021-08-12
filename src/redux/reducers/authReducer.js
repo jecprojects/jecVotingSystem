@@ -8,7 +8,9 @@ const initState = {
     message: '',
     loading: false,
     messageType: '',
-    toLoginPage: false
+    voted: false,
+    toLoginPage: false,
+    user: null
 }
 
 export default (state = initState, action) => {
@@ -60,7 +62,8 @@ export default (state = initState, action) => {
                 messageType: action.messageType,
                 token: action.token,
                 email: action.email,
-                loading: false
+                loading: false,
+                user: action.user
             }
             break;
         case authConstants.LOGIN_FAILURE:

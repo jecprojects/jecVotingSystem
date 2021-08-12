@@ -1,6 +1,32 @@
 import { authConstants } from '../store/constants';
 import { firebaseApp } from '../../fbConfig';
 
+////// Is user Loggedd IN////////////////////////
+export const getUserData = () => {
+    return async dispatch => {
+        const email = localStorage.getItem('email');
+        if(email) {
+            const userRef = firebaseApp.firestore()
+                    .collection('voters')
+                    .doc(email)
+
+            const doc = await userRef.get();
+
+            if(!doc.exists){
+                console.log('Document Not Found!')
+            }else{
+                dispatch({
+                    type: authConstants.LOGIN_SUCCESS,
+                    messageType: "suc",
+                    message: "Login Success!",
+                    user: doc.data()
+                })
+            }
+
+
+        }
+    }
+}
 
 ////// Is user Loggedd IN////////////////////////
 export const IsUserLoggedIn = () => {
@@ -70,7 +96,8 @@ export const RegisterAction = (userObj) => {
                                         .doc(email)
                                         .set({
                                             email: userObj.userEmail,
-                                            rollNumber: userObj.userRollNumber
+                                            rollNumber: userObj.userRollNumber,
+                                            voted: false
                                         }, {merge: true})
                                         .then(() => {
                                             // Sending User a Verification Link

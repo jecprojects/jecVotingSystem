@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { StoreSelectedDataAction } from '../../redux/actions/storeSelectedDataAction';
 
 import './style.css';
 
 
 const VoteDiv = (props) => {
-    console.log(props.candidate)
+    // console.log(props.candidate)
+
+    const selectedCandidate = useSelector(state => state.selectedCandidate);
+    const dispatch = useDispatch();
 
     const [ value, setValue ] = useState();
 
@@ -12,7 +17,12 @@ const VoteDiv = (props) => {
         setValue(e.target.value);
     }
 
-    console.log(value);
+    useEffect(() => {
+        if(value){
+            dispatch(StoreSelectedDataAction(value, selectedCandidate.selectedCandidate));
+        }
+    }, [value])
+
     return(
         <div className="voting-div"> 
             <div className="l-div">
@@ -23,14 +33,14 @@ const VoteDiv = (props) => {
                 <div className="wrapper">
                     <input 
                         type="radio" 
-                        checked={value === props.candidate.L1.fullName} 
-                        value={props.candidate.L1.fullName} 
+                        checked={value === props.candidate.L1.id} 
+                        value={props.candidate.L1.id} 
                         onChange={handleChange} 
                         name={props.candidate.L1.position} 
                         id={props.candidate.L1.fullName}
                     />
                     <label for={props.candidate.L1.fullName} class="option option-1">
-                        <span>{value === props.candidate.L1.fullName ? 'Voted' : 'Vote'}</span>
+                        <span>{value === props.candidate.L1.id ? 'Selected' : 'Select'}</span>
                     </label>
                 </div>
             </div>
@@ -42,14 +52,14 @@ const VoteDiv = (props) => {
                 <div className="wrapper">
                     <input 
                         type="radio" 
-                        checked={value === props.candidate.L2.fullName} 
-                        value={props.candidate.L2.fullName} 
+                        checked={value === props.candidate.L2.id} 
+                        value={props.candidate.L2.id} 
                         onChange={handleChange} 
                         name={props.candidate.L2.position} 
                         id={props.candidate.L2.fullName}
                     />
                     <label for={props.candidate.L2.fullName} class="option option-2">
-                        <span>{value === props.candidate.L2.fullName ? 'Voted' : 'Vote'}</span>
+                        <span>{value === props.candidate.L2.id ? 'Selected' : 'Select'}</span>
                     </label>
                 </div>
             </div>

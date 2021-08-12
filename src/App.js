@@ -9,7 +9,7 @@ import RegisterPage from './container/registerPage';
 import AllVotingPage from './container/allVotingPage';
 
 
-import {IsUserLoggedIn} from './redux/actions/authAction';
+import {getUserData, IsUserLoggedIn} from './redux/actions/authAction';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -25,6 +25,9 @@ function App() {
     if(!auth.authenticate){ 
       dispatch(IsUserLoggedIn());
     }
+  },[])
+  useEffect(() => {
+      dispatch(getUserData());
   },[])
 
   return (

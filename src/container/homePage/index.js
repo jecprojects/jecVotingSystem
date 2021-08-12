@@ -13,6 +13,9 @@ import { getCandidateAction } from '../../redux/actions/candidateAction';
 import './style.css';
 import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { Button } from '@material-ui/core';
+import { firebaseApp } from '../../fbConfig';
+import sha256 from 'sha256';
 /**
 * @author
 * @function HomePage
@@ -22,10 +25,33 @@ const HomePage = (props) => {
   const dispatch = useDispatch();
 
 
-  // const auth = useSelector(state => state.auth);
+  const auth = useSelector(state => state.auth);
+  const selectedCandidate = useSelector(state => state.selectedCandidate);
   const candidates = useSelector(state => state.candidates);
 
-  console.log(candidates);
+  const onSubmit = async () => {
+    if(auth.user.voted == "yes"){
+      // Already Voted
+    }
+    if(auth.user.voted == "no"){
+      if(selectedCandidate.selectedCandidate.length === 12){
+
+        const hash = sha256(selectedCandidate.selectedCandidate)
+        console.log(hash)
+        // Here the block is Created And Send To Verification
+        const verificationRef = firebaseApp.firestore().collection('pendingRequests').doc(hash);
+
+        await verificationRef.set({
+          
+        }, { merge: true }).then(res => {
+          console.log('Updated!');
+        });
+      }else{
+        alert('You Should Select all 12 Candidates');
+      }
+    }
+  }
+
 
   const logoutFunction = (e) => {
     dispatch(LogoutAction())
@@ -60,7 +86,7 @@ const HomePage = (props) => {
         <div className="votecast-main-div">
           {
             candidates.candidates ? candidates.candidates.map(candidate => {
-              return <VoteDiv candidate={candidate}/>
+              return <VoteDiv key={candidate.L1.id} candidate={candidate}/>
             })
             :
             <Loader
@@ -70,6 +96,12 @@ const HomePage = (props) => {
               width={100}
             />
           }
+        </div>
+
+        <div style={{marginTop:50}}>
+          <Button onClick={onSubmit} variant="contained" color="primary">
+            Submit
+          </Button> 
         </div>
       </div>
     </div>
