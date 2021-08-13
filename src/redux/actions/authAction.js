@@ -15,11 +15,14 @@ export const getUserData = () => {
             if(!doc.exists){
                 console.log('Document Not Found!')
             }else{
+                const token = localStorage.getItem('token');
                 dispatch({
                     type: authConstants.LOGIN_SUCCESS,
                     messageType: "suc",
                     message: "Login Success!",
-                    user: doc.data()
+                    user: doc.data(),
+                    token: token,
+                    email: doc.data().email
                 })
             }
 
@@ -97,7 +100,8 @@ export const RegisterAction = (userObj) => {
                                         .set({
                                             email: userObj.userEmail,
                                             rollNumber: userObj.userRollNumber,
-                                            voted: false
+                                            voted: 'no',
+                                            role: 'user'
                                         }, {merge: true})
                                         .then(() => {
                                             // Sending User a Verification Link

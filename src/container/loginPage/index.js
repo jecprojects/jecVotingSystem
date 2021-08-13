@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
 import {NavLink, Redirect} from 'react-router-dom'; 
@@ -30,9 +30,11 @@ const LoginPage = (props) => {
   const [open, setOpen] = useState(true);
 
   // Redirect To Home Page When Logged In
+
   if (auth.authenticate) {
     return <Redirect to={"/"} />;
   }
+
 
 
   // Material Ui alert Function

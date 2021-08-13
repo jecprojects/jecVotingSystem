@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // All Page Links
-import HomePage from './container/homePage';
+import HomePage from './container/index';
 import LoginPage from './container/loginPage';
 import RegisterPage from './container/registerPage';
 import AllVotingPage from './container/allVotingPage';
@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 import PrivateRoute from './component/privateRoute';
+import MinerPage from './container/minerPage';
+import UserPage from './container/userPage';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         <Route path="/login" component={LoginPage}/>
         <Route path="/register" component={RegisterPage}/>
         <PrivateRoute path="/allvotings" component={AllVotingPage}/>
+        <PrivateRoute path="/miner" component={MinerPage}/>
+        <PrivateRoute path="/user" component={UserPage}/>
       </Switch>
     </div>
   );
