@@ -36,7 +36,7 @@ const UserPage = (props) => {
     if(auth.user.voted == "no"){
       if(selectedCandidate.selectedCandidate.length === 12){
 
-        const hash = sha256(selectedCandidate.selectedCandidate)
+        const hash = sha256(`${selectedCandidate.selectedCandidate}${auth.email}`)
         console.log(hash)
 
         const votedCandidates = selectedCandidate.selectedCandidate;
