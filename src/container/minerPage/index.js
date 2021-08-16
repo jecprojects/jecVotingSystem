@@ -39,6 +39,13 @@ const MinerPage = (props) => {
   }
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(GetPendingRequestAction())
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     dispatch(GetPendingRequestAction())
   }, [])
 

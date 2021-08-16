@@ -1,5 +1,8 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { CancelDataRequest } from '../../redux/actions/cancelRequestAction';
+import { VerifyDataRequest } from '../../redux/actions/verifyRequestAction';
 import './style.css';
 
 /**
@@ -8,9 +11,18 @@ import './style.css';
 **/
 
 const PendingDiv = (props) => {
-  
-  
 
+  const dispatch = useDispatch()
+  
+  const verifyVoter = () => {
+    dispatch(VerifyDataRequest(props.req.voter));
+  }
+
+  const cancelVoter = () => {
+    dispatch(CancelDataRequest(props.req.voter));
+  }
+
+  
   return(
     <div className="verify-details-div">
       <div className="verify-details-div-top">
@@ -22,7 +34,10 @@ const PendingDiv = (props) => {
       </div>
 
       <div className="right-div"> 
-        <Button variant="contained" color="primary">
+        <Button onClick={cancelVoter} variant="contained" color="secondary">
+          Cancel
+        </Button>
+        <Button onClick={verifyVoter} variant="contained" color="primary">
           Verify
         </Button>
       </div>
