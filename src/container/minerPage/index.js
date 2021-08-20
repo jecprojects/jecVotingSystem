@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserData, LogoutAction } from '../../redux/actions/authAction';
+import { LogoutAction } from '../../redux/actions/authAction';
 import { GetPendingRequestAction } from '../../redux/actions/pendingRequestAction';
 
 import { NavLink, Redirect } from 'react-router-dom';
@@ -8,18 +8,15 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { FiX, FiLogOut } from 'react-icons/fi';
 import { GoHome } from 'react-icons/go';
-import VoteDiv from '../../component/votdiv';
 
 import './style.css';
-import Loader from 'react-loader-spinner';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Button } from '@material-ui/core';
-import { firebaseApp } from '../../fbConfig';
-import sha256 from 'sha256';
 import PendingDiv from '../../component/pendingdiv/pendingDiv';
 import { GetVerifiedRequestAction } from '../../redux/actions/verifiedRequestAction';
 import { GetCancelledRequestAction } from '../../redux/actions/cancelledRequestAction';
 import { BlockChain } from '../../component/blockChain';
+import { ResultData } from '../../component/result';
 
 
 /**
@@ -35,11 +32,15 @@ const MinerPage = (props) => {
   const verifiedRequest = useSelector(state => state.verifiedRequest);
   const cancelledRequest = useSelector(state => state.cancelledRequest);
 
+
+
+
   const types = [
     { title: "pending" },
     { title: "Verified" },
     { title: "Cancelled" },
     { title: "BlockChain" },
+    { title: "result" }
   ];
 
   const [active, setActive] = useState(types[0].title);
@@ -98,6 +99,11 @@ const MinerPage = (props) => {
         return <BlockChain/>;
         break;
 
+      case "result":
+        return <ResultData/>;
+        break;
+      
+
       default:
         break;
     }
@@ -124,7 +130,6 @@ const MinerPage = (props) => {
     dispatch(GetPendingRequestAction());
     dispatch(GetVerifiedRequestAction());
     dispatch(GetCancelledRequestAction());
-
   }, [])
 
 

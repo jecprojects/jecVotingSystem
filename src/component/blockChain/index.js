@@ -41,7 +41,6 @@ export const BlockChain = (props) => {
         return () => clearInterval(interval);
     }, []);
 
-    console.log(blockChain);
 
     return(
         <div className="blockchain-div">
