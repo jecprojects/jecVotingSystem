@@ -58,3 +58,21 @@
         align-items: center;
         padding: 2rem 5rem;
     }
+        .nav-div{
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        
+        .main-body-of-miner{
+            width: 100%;
+            height: auto;
+        }
+            
+
+
+            

@@ -1,0 +1,88 @@
+.blockchain-div{
+    max-width: 100%;
+    height: 28rem;
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+    overflow-x: scroll;
+}
+    .blocks{
+        position: relative;
+        width: 41rem;
+        height: 20rem;
+        border: 2px dashed rgba(108, 189, 116, 0.87);
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 10px;
+        border-radius: 5px;
+        word-wrap:break-word;
+    }
+    .blocks:hover{
+        border: 2px solid #38BD45;
+    }
+        .blockId{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: #BA9510;
+            background-color: rgba(240, 207, 89, 0.24);
+            padding: 3px 6px;
+            border-radius: 5px;
+            word-wrap: break-word;
+        }
+        .hash-div, .hash-div2, .hash-div3{
+            display: flex;
+            /* flex-direction: column; */
+            gap: 0.2rem;
+        }
+
+        .hash-div3{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+            .head1, .head2, .head3{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+                color: #106E8B;
+                padding: 3px 6px;
+                background-color: rgba(17, 69, 85, 0.04);
+                border-radius: 5px;
+            }
+            .head2{
+                background-color: rgba(15, 134, 84, 0.04);
+                color: #0F8654;
+                padding: 3px 6px;
+                border-radius: 5px;
+            }
+            .head3{
+                background-color: rgba(17, 15, 134, 0.04);
+                color: #110F86;
+                padding: 3px 6px;
+                border-radius: 5px;
+            }
+
+            .hashvalue, .hashvalue2, .hashvalue3{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                font-weight: 200;
+                color: #106E8B;
+                padding: 3px 6px;
+                background-color: rgba(17, 69, 85, 0.04);
+                border-radius: 5px;
+                word-wrap: break-word;
+            }
+            .hashvalue2{
+                background-color: rgba(15, 134, 84, 0.04);
+                color: #0F8654;
+            }
+            .hashvalue3{
+                background-color: rgba(17, 15, 134, 0.04);
+                color: #110F86;
+            }

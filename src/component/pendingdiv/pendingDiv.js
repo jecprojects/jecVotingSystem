@@ -33,15 +33,24 @@ const PendingDiv = (props) => {
         <label className="hash">{props.req.hash}</label>
       </div>
 
-      <div className="right-div"> 
-        <Button onClick={cancelVoter} variant="contained" color="secondary">
-          Cancel
-        </Button>
-        <Button onClick={verifyVoter} variant="contained" color="primary">
-          Verify
-        </Button>
+        <div className="right-div"> 
+          {
+            props.type === 'action' ? 
+              <>
+                <Button onClick={cancelVoter} color="secondary">
+                  Cancel
+                </Button>
+                <Button onClick={verifyVoter} variant="contained" color="primary">
+                  Verify
+                </Button>
+              </>
+              :
+              null
+          }
+        </div>
+
       </div>
-    </div>
+
    )
 
  }

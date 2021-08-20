@@ -3,12 +3,16 @@ import authReducer from "./authReducer";
 import candidateReducer from "./candidates/candidateReducer";
 import pendingRequestReducer from "./pendingRequestReducer";
 import storeSelectedDataReducer from "./storeSelectedDataReducer";
+import verifiedRequestReducer from "./verifiedRequestReducer";
+import cancelledRequestReducer from './cancelledRequestReducer';
 
 const rootReducer = combineReducers({
     auth: authReducer,
     candidates: candidateReducer,
     selectedCandidate: storeSelectedDataReducer,
-    pendingRequest: pendingRequestReducer
+    pendingRequest: pendingRequestReducer,
+    verifiedRequest: verifiedRequestReducer,
+    cancelledRequest: cancelledRequestReducer
 });
 
 export default rootReducer;

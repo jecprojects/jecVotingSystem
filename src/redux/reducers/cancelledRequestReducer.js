@@ -4,12 +4,12 @@ const initState = {
     message: '',
     loading: false,
     messageType: '',
-    pendingRequest: null
+    cancelledRequest: null
 }
 
 export default (state = initState, action) => {
     switch(action.type){
-        case minerConstants.GET_DATA_REQUEST_PENDING:
+        case minerConstants.GET_DATA_REQUEST_CANCELLED:
             state = {
                 ...state,
                 loading: true,
@@ -18,17 +18,17 @@ export default (state = initState, action) => {
             }
         break;
 
-        case minerConstants.GET_DATA_SUCCESS_PENDING:
+        case minerConstants.GET_DATA_SUCCESS_CANCELLED:
             state = {
                 ...state,
                 loading: false,
                 message: action.message,
                 messageType: action.messageType,
-                pendingRequest: action.data
+                cancelledRequest: action.data
             }
         break;
 
-        case minerConstants.GET_DATA_FAILURE_PENDING:
+        case minerConstants.GET_DATA_FAILURE_CANCELLED:
             state = {
                 ...state,
                 loading: false,

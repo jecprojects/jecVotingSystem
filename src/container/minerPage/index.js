@@ -5,11 +5,10 @@ import { GetPendingRequestAction } from '../../redux/actions/pendingRequestActio
 
 import { NavLink, Redirect } from 'react-router-dom';
 
-import {HiMenuAlt3} from 'react-icons/hi';
-import {FiX, FiLogOut} from 'react-icons/fi';
-import {GoHome} from 'react-icons/go';
+import { HiMenuAlt3 } from 'react-icons/hi';
+import { FiX, FiLogOut } from 'react-icons/fi';
+import { GoHome } from 'react-icons/go';
 import VoteDiv from '../../component/votdiv';
-import { getCandidateAction } from '../../redux/actions/candidateAction';
 
 import './style.css';
 import Loader from 'react-loader-spinner';
@@ -18,6 +17,11 @@ import { Button } from '@material-ui/core';
 import { firebaseApp } from '../../fbConfig';
 import sha256 from 'sha256';
 import PendingDiv from '../../component/pendingdiv/pendingDiv';
+import { GetVerifiedRequestAction } from '../../redux/actions/verifiedRequestAction';
+import { GetCancelledRequestAction } from '../../redux/actions/cancelledRequestAction';
+import { BlockChain } from '../../component/blockChain';
+
+
 /**
 * @author
 * @function MinerPage
@@ -28,7 +32,76 @@ const MinerPage = (props) => {
 
   const auth = useSelector(state => state.auth);
   const pendingRequest = useSelector(state => state.pendingRequest);
+  const verifiedRequest = useSelector(state => state.verifiedRequest);
+  const cancelledRequest = useSelector(state => state.cancelledRequest);
 
+  const types = [
+    { title: "pending" },
+    { title: "Verified" },
+    { title: "Cancelled" },
+    { title: "BlockChain" },
+  ];
+
+  const [active, setActive] = useState(types[0].title);
+
+  const switchTabs = () => {
+    switch (active) {
+      case "pending":
+        return(
+          <>
+            {
+            pendingRequest.pendingRequest ? 
+              pendingRequest.pendingRequest.map((req) => {
+                return <PendingDiv key={req.voter} type="action" req={req}/>
+              })
+            :
+  
+            <label>Wait a Minute..</label>
+          }
+          </>
+        );
+        break;
+
+      case "Verified":
+        return(
+          <>
+          {
+          verifiedRequest.verifiedRequest ? 
+          verifiedRequest.verifiedRequest.map((req) => {
+              return <PendingDiv key={req.voter} type="noaction" req={req}/>
+            })
+          :
+
+          <label>Wait a Minute..</label>
+        }
+        </>
+        );
+        break;
+
+      case "Cancelled":
+        return(
+          <>
+            {
+            cancelledRequest.cancelledRequest ? 
+              cancelledRequest.cancelledRequest.map((req) => {
+                  return <PendingDiv key={req.voter} type="noaction" req={req}/>
+                })
+              :
+
+              <label>Wait a Minute..</label>
+            }
+          </>
+        );
+        break;
+
+      case "BlockChain":
+        return <BlockChain/>;
+        break;
+
+      default:
+        break;
+    }
+  };
 
   const logoutFunction = (e) => {
     dispatch(LogoutAction())
@@ -40,40 +113,56 @@ const MinerPage = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      dispatch(GetPendingRequestAction())
+      dispatch(GetPendingRequestAction());
+      dispatch(GetVerifiedRequestAction());
+      dispatch(GetCancelledRequestAction());
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    dispatch(GetPendingRequestAction())
+    dispatch(GetPendingRequestAction());
+    dispatch(GetVerifiedRequestAction());
+    dispatch(GetCancelledRequestAction());
+
   }, [])
 
 
-
-  return(
+  return (
     <div className="homepage-main-div">
       <div className="heading-div">
         <label className="logo-name">Verification</label>
         <div className="menu-Item">
-          <div className="menu-icons"><HiMenuAlt3/></div>
-          <div className="menu-icons" onClick={redirectToHome}><GoHome/></div>
-          <div className="menu-icons" onClick={logoutFunction}><FiLogOut/></div>
+          <div className="menu-icons"><HiMenuAlt3 /></div>
+          <div className="menu-icons" onClick={redirectToHome}><GoHome /></div>
+          <div className="menu-icons" onClick={logoutFunction}><FiLogOut /></div>
         </div>
       </div>
 
       <div className="main-body-div">
-        {
-          pendingRequest.pendingRequest ? 
-            pendingRequest.pendingRequest.map((req) => {
-              return <PendingDiv req={req}/>
-            })
-          :
-
-          <label>Wait a Minute..</label>
-        }
+        <div className="nav-div">
+          {types.map((type) => (
+            <div
+              key={type.title}
+              active={active === type.title}
+              onClick={() => setActive(type.title)}
+            >
+              {active === type.title ?
+                <Button color="secondary">
+                  {type.title}
+                </Button>
+                : 
+                <Button>{type.title}</Button>
+              }
+            </div>
+            ))}
       </div>
+      <div className="main-body-of-miner">
+        {switchTabs()}
+      </div>
+
     </div>
+    </div >
    )
 
  }

@@ -81,6 +81,12 @@ const UserPage = (props) => {
     dispatch(getCandidateAction());
   },[])
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const filterDiv = () => {
     if(auth && auth.user){
